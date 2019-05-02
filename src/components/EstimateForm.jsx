@@ -1,12 +1,25 @@
 import React, { Component } from 'react';
 
 class EstimateForm extends Component {
-    state = {  }
-    render() { 
-        return ( 
-            <h2>Formulaire</h2>
-         );
+    state = {}
+
+    handleSubmit = evt => {
+        evt.preventDefault();
+        console.log('généré');
+        
+    }
+
+    render() {
+        return (
+            <>
+                <div>Nouveau devis</div>
+                <form onSubmit ={ this.handleSubmit }>
+                    <input type="text" name="estimate-title" id="estimate-title" placeholder="titre du devis" />
+                    <button type="submit">générer le devis</button>
+                </form>
+            </>
+        );
     }
 }
- 
-export default EstimateForm ;
+
+export default EstimateForm;
