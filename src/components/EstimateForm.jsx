@@ -57,8 +57,17 @@ class EstimateForm extends Component {
             amount: 0
         };
         this.setState({ items: items });
-        
     }
+
+    handleItemChange = (evt, item, field) => {
+        console.log(evt.currentTarget.value, item, field);
+        const value = evt.currentTarget.value;
+        const clonedItem = { ...item };
+        clonedItem[field] = value;
+        const clonedItems = { ...this.state.items };
+        clonedItems[clonedItem.id] = clonedItem ;
+        this.setState({ items: clonedItems });   
+    };
 
     render() {
         return (
@@ -70,8 +79,8 @@ class EstimateForm extends Component {
                     <input type="text" name="customerFirstName" id="customerFirstName" placeholder="prénom" value={this.state.customerFirstName} onChange={evt => this.handleChange(evt,'customerFirstName')} /> <br/>
                     <input type="text" name="customerLastName" id="customerLastName" placeholder="nom" value={this.state.customerLastName} onChange={evt => this.handleChange(evt, 'customerLastName')} /> <br/>
                     <button onClick={ this.addItem }>ajouter une ligne</button>
+                    { Object.keys(this.state.items).map((itemId, index) => (<Item key={ index } item={this.state.items[itemId]} onItemChange={ this.handleItemChange } />)) }
                     <button type="submit">générer le devis</button>
-                    { Object.keys(this.state.items).map((itemId, index) => (<Item key={ index } item={this.state.items[itemId]} />)) }
                 </form>
             </>
         );
