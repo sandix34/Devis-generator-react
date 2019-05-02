@@ -9,6 +9,25 @@ class EstimateForm extends Component {
         items: {}
     };
 
+    /*
+    items: {
+        "12345": {
+            id: "34567",
+            description: "unité centrale",
+            quantity: "1",
+            taxe: 0.2,
+            amount: 1400
+        },
+        "453245": {
+            id: "45475324",
+            description: "écran",
+            quantity: "2",
+            taxe: 0.2,
+            amount: 400
+        }
+    }
+    */
+
     handleSubmit = evt => {
         evt.preventDefault();
         console.log('généré');
@@ -25,6 +44,21 @@ class EstimateForm extends Component {
 
     }
 
+    addItem = () => {
+        const id = Date.now().toString();
+        const items = { ...this.state.items };
+        console.log(this, items);
+        items[id] = {
+            id: id,
+            description: "description",
+            quantity: "1",
+            taxe: 0.2,
+            amount: 0
+        };
+        this.setState({ items: items });
+        
+    }
+
     render() {
         return (
             <>
@@ -33,7 +67,8 @@ class EstimateForm extends Component {
                     <input type="text" name="id" id="id" placeholder="ID" value={this.state.id} onChange={evt => this.handleChange(evt, 'id')} /> <br/>
                     <input type="text" name="title" id="title" placeholder="titre du devis" value={this.state.Title} onChange={evt => this.handleChange(evt,'title')} /> <br/>
                     <input type="text" name="customerFirstName" id="customerFirstName" placeholder="prénom" value={this.state.customerFirstName} onChange={evt => this.handleChange(evt,'customerFirstName')} /> <br/>
-                    <input type="text" name="customerLastName" id="customerLastName" placeholder="nom" value={this.state.customerLastName} onChange={evt => this.handleChange(evt, 'customerLastName')} />
+                    <input type="text" name="customerLastName" id="customerLastName" placeholder="nom" value={this.state.customerLastName} onChange={evt => this.handleChange(evt, 'customerLastName')} /> <br/>
+                    <button onClick={ this.addItem }>ajouter une ligne</button>
                     <button type="submit">générer le devis</button>
                 </form>
             </>
