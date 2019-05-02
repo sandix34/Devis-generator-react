@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Item from './item';
+import { renderPDFInDOM } from './pdfMaker';
 
 class EstimateForm extends Component {
     state = {
@@ -80,7 +81,7 @@ class EstimateForm extends Component {
                     <input type="text" name="customerLastName" id="customerLastName" placeholder="nom" value={this.state.customerLastName} onChange={evt => this.handleChange(evt, 'customerLastName')} /> <br/>
                     <button onClick={ this.addItem }>ajouter une ligne</button>
                     { Object.keys(this.state.items).map((itemId, index) => (<Item key={ index } item={this.state.items[itemId]} onItemChange={ this.handleItemChange } />)) }
-                    <button type="submit">générer le devis</button>
+                    <button onClick={() => renderPDFInDOM(JSON.stringify(this.state))}>générer le devis au format PDF</button>
                 </form>
             </>
         );
