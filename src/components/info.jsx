@@ -1,18 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class Info extends Component {
-    state = {}
-    render() {
-        return (
+const Info = (props) => {
+    return (
+        <div>
+            <h2>Bienvenue sur votre générateur de devis</h2>
             <div>
-                <h2>Bienvenue sur votre générateur de devis</h2>
-                <div>
-                    Créer un devis ? C'est simple : cliquez sur  
-                    <button onClick={ this.props.onHandleShowEstimateForm } >nouveau devis</button>
-                </div>
+                Créer un devis ? C'est simple : cliquez sur
+            <button onClick={ props.onHandleShowEstimateForm } >nouveau devis</button>
             </div>
-        );
-    }
+        </div>);
 }
 
 export default Info;
