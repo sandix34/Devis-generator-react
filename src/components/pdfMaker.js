@@ -27,8 +27,19 @@ const styles = StyleSheet.create({
 const MyDocument = ({text}) => (
   <Document>
     <Page size="A4" style={styles.page}>
-      <View style={styles.section}>
-        <Text>{text}</Text>
+        <View style={styles.section}>
+        <Text>Devis : { text.title }</Text>
+        <Text>N° : { text.id }</Text>
+        <Text>Client : { text.customerFirstName } { text.customerLastName }</Text>
+        <Text>Articles : </Text>
+        { Object.keys(text.items).map((key, index) => (
+          <Text key={key}>
+          {text.items[key].quantity} &nbsp;
+          {text.items[key].description} &nbsp;
+          {parseFloat(text.items[key].taxe) * 100.}% &nbsp;
+          {text.items[key].amount}€
+          </Text>
+        )) }
       </View>
     </Page>
   </Document>
