@@ -1,3 +1,13 @@
+### Ce projet  a été réalisé dans le cadre de la formation e-learning "Devenir opérationnel en React Volume 2" proposé par [CodeConcept](https://codeconcept.teachable.com/)  :fr: 
+
+## Fonctionnalités du projet
+
+- Gestion de formulaire
+
+- Générer des fichiers au format PDF
+
+![generatorDevis1](https://user-images.githubusercontent.com/44428775/58250089-e3947300-7d60-11e9-9587-f7d04d201ef4.gif)
+
 Ce projet a été démarré avec [Create React App](https://github.com/facebook/create-react-app).
 
 ## Scripts disponibles
